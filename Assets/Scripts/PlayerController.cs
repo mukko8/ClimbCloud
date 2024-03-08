@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;//LoadSceneを使うために必要！
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     //ゴールに到達
     void OnTriggerEnter2D(Collider2D collision){
         Debug.Log("ゴール");
+        SceneManager.LoadScene("ClearScene");
     }
 
 }
