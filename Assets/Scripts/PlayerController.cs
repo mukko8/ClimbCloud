@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //ジャンプする
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.Space)&&this.rigid2D.velocity.y==0){
             this.rigid2D.AddForce(transform.up*this.jumpForce);
         }
         //左右移動
@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
         }
         //プレイヤの速度に応じてアニメーション速度を変える
         this.animator.speed=speedx/2.0f;
+        //画面外に出たら最初から
+        if(transform.position.y<-10){
+            SceneManager.LoadScene("GameScene");
+        }
     }
     //ゴールに到達
     void OnTriggerEnter2D(Collider2D collision){
